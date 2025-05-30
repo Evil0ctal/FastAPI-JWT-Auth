@@ -643,7 +643,7 @@ This project implements several security best practices:
 - 🌐 **CORS**: Configurable cross-origin resource sharing
 - 🔐 **2FA Support**: TOTP-based two-factor authentication
 
-For security concerns, please email: security@yourdomain.com
+For security concerns, please email: evil0ctal1985@gmail.com
 
 ## 📈 Performance
 
