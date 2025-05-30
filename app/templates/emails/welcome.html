@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block title %}Welcome to {{ app_name }}!{% endblock %}
+
+{% block content %}
+<h2>Welcome aboard, {{ username }}! 🎉</h2>
+
+<p>We're thrilled to have you join the {{ app_name }} community. Your account has been successfully created and you're all set to start exploring.</p>
+
+<h3>What's Next?</h3>
+<p>Here are a few things you can do to get started:</p>
+
+<ul>
+    <li><strong>Complete your profile:</strong> Add more information to personalize your experience</li>
+    <li><strong>Explore features:</strong> Discover all the tools and features available to you</li>
+    <li><strong>Stay secure:</strong> Consider enabling additional security features for your account</li>
+</ul>
+
+<div style="text-align: center;">
+    <a href="{{ login_url }}" class="button">Go to Dashboard</a>
+</div>
+
+<h3>Need Help?</h3>
+<p>If you have any questions or need assistance, our support team is here to help. Feel free to reach out anytime!</p>
+
+<p>Thank you for choosing {{ app_name }}. We look forward to serving you!</p>
+
+<p>Best regards,<br>
+The {{ app_name }} Team</p>
+
+<div class="footer" style="margin-top: 40px;">
+    <p><small>You're receiving this email because you recently created an account. If this wasn't you, please contact our support team immediately.</small></p>
+</div>
+{% endblock %}

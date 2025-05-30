@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block title %}Verify Your Email - {{ app_name }}{% endblock %}
+
+{% block content %}
+<h2>Hello {{ username }}!</h2>
+
+<p>Thank you for registering with {{ app_name }}. To complete your registration, please verify your email address by clicking the button below:</p>
+
+<div style="text-align: center;">
+    <a href="{{ verification_url }}" class="button">Verify Email Address</a>
+</div>
+
+<p>Or copy and paste this link into your browser:</p>
+<p style="word-break: break-all; background-color: #f8f9fa; padding: 10px; border-radius: 5px;">
+    {{ verification_url }}
+</p>
+
+<div class="warning">
+    <strong>Note:</strong> This verification link will expire in 24 hours. If you didn't create an account with {{ app_name }}, please ignore this email.
+</div>
+
+<p>If you have any questions, please don't hesitate to contact our support team.</p>
+
+<p>Best regards,<br>
+The {{ app_name }} Team</p>
+{% endblock %}

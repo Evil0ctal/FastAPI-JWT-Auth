@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FastAPI JWT Auth - Login</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="auth-container">
+            <div class="auth-card">
+                <h1 class="auth-title">Welcome Back</h1>
+                <p class="auth-subtitle">Sign in to your account</p>
+                
+                <div id="demoAlert" class="alert alert-info" style="display: none;">
+                    <strong>Demo Mode:</strong> Use email: demo@example.com, password: demo123
+                </div>
+                
+                <div id="alert" class="alert" style="display: none;"></div>
+                
+                <form id="loginForm" class="auth-form">
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required placeholder="you@example.com">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" name="password" required placeholder="••••••••">
+                    </div>
+                    
+                    <div class="form-group" style="text-align: right;">
+                        <a href="/static/forgot-password.html" style="font-size: 14px;">Forgot password?</a>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary btn-block">Sign In</button>
+                </form>
+                
+                <div class="oauth-divider">
+                    <span>OR</span>
+                </div>
+                
+                <div id="oauthButtons" class="oauth-buttons">
+                    <!-- OAuth buttons will be loaded here -->
+                </div>
+                
+                <div class="auth-footer">
+                    <p>Don't have an account? <a href="/static/register.html">Sign up</a></p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="feature-container">
+            <h2>FastAPI JWT Authentication</h2>
+            <ul class="feature-list">
+                <li>✅ Secure JWT Token Authentication</li>
+                <li>✅ Async MySQL Database Support</li>
+                <li>✅ User Profile Management</li>
+                <li>✅ Role-based Access Control</li>
+                <li>✅ Production-ready Template</li>
+            </ul>
+        </div>
+    </div>
+    
+    <script src="/static/js/auth.js"></script>
+</body>
+</html>

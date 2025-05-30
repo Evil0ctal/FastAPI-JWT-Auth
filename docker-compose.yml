@@ -1,0 +1,107 @@
+version: '3.8'
+
+services:
+  # MySQL Database Service
+  mysql:
+    image: mysql:8.0
+    container_name: fastapi_mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:-rootpassword}
+      MYSQL_DATABASE: ${MYSQL_DATABASE:-fastapi_jwt_db}
+      MYSQL_USER: ${MYSQL_USER:-fastapi_user}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD:-fastapi_password}
+    ports:
+      - "${MYSQL_PORT:-3306}:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    command: --default-authentication-plugin=mysql_native_password
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      timeout: 20s
+      retries: 10
+    networks:
+      - fastapi_network
+
+  # FastAPI Application Service
+  app:
+    build: .
+    container_name: fastapi_app
+    restart: always
+    ports:
+      - "${APP_PORT:-8000}:8000"
+    environment:
+      # Application Settings
+      APP_MODE: ${APP_MODE:-production}
+      ENVIRONMENT: ${ENVIRONMENT:-production}
+      
+      # JWT Settings
+      SECRET_KEY: ${SECRET_KEY:-change-this-secret-key-in-production}
+      ALGORITHM: ${ALGORITHM:-HS256}
+      ACCESS_TOKEN_EXPIRE_MINUTES: ${ACCESS_TOKEN_EXPIRE_MINUTES:-30}
+      REFRESH_TOKEN_EXPIRE_DAYS: ${REFRESH_TOKEN_EXPIRE_DAYS:-7}
+      
+      # Database Settings
+      DATABASE_TYPE: mysql
+      MYSQL_HOST: mysql
+      MYSQL_PORT: 3306
+      MYSQL_USER: ${MYSQL_USER:-fastapi_user}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD:-fastapi_password}
+      MYSQL_DATABASE: ${MYSQL_DATABASE:-fastapi_jwt_db}
+      
+      # Email Settings
+      EMAIL_ENABLED: ${EMAIL_ENABLED:-false}
+      SMTP_HOST: ${SMTP_HOST:-smtp.gmail.com}
+      SMTP_PORT: ${SMTP_PORT:-587}
+      SMTP_USER: ${SMTP_USER:-}
+      SMTP_PASSWORD: ${SMTP_PASSWORD:-}
+      SMTP_FROM: ${SMTP_FROM:-noreply@example.com}
+      
+      # OAuth Settings
+      GOOGLE_CLIENT_ID: ${GOOGLE_CLIENT_ID:-}
+      GOOGLE_CLIENT_SECRET: ${GOOGLE_CLIENT_SECRET:-}
+      GITHUB_CLIENT_ID: ${GITHUB_CLIENT_ID:-}
+      GITHUB_CLIENT_SECRET: ${GITHUB_CLIENT_SECRET:-}
+      
+      # Frontend URL
+      FRONTEND_URL: ${FRONTEND_URL:-http://localhost:8000}
+    depends_on:
+      mysql:
+        condition: service_healthy
+    volumes:
+      - ./static:/app/static
+      - uploads_data:/app/uploads
+      - logs_data:/app/logs
+    networks:
+      - fastapi_network
+
+  # Nginx Reverse Proxy (Optional)
+  nginx:
+    image: nginx:alpine
+    container_name: fastapi_nginx
+    restart: always
+    ports:
+      - "${NGINX_PORT:-80}:80"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./static:/app/static:ro
+    depends_on:
+      - app
+    networks:
+      - fastapi_network
+    profiles:
+      - production
+
+# Volumes
+volumes:
+  mysql_data:
+    driver: local
+  uploads_data:
+    driver: local
+  logs_data:
+    driver: local
+
+# Networks
+networks:
+  fastapi_network:
+    driver: bridge
