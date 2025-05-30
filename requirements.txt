@@ -1,18 +1,43 @@
-annotated-types==0.6.0
-anyio==4.3.0
-click==8.1.7
-colorama==0.4.6
-ecdsa==0.19.0
-fastapi==0.110.2
-h11==0.14.0
-idna==3.7
-pyasn1==0.6.0
-pydantic==2.7.0
-pydantic_core==2.18.1
-python-jose==3.3.0
-rsa==4.9
-six==1.16.0
-sniffio==1.3.1
-starlette==0.40.0
-typing_extensions==4.11.0
-uvicorn==0.29.0
+# Core Dependencies
+fastapi==0.109.2
+uvicorn[standard]==0.27.1
+python-jose[cryptography]==3.3.0
+passlib[bcrypt]==1.7.4
+python-multipart==0.0.9
+pydantic==2.6.1
+pydantic-settings==2.1.0
+python-dotenv==1.0.1
+
+# ASGI/HTTP
+starlette==0.36.3
+aiofiles==23.2.1
+
+# Database
+sqlalchemy==2.0.27
+aiosqlite==0.19.0
+aiomysql==0.2.0
+
+# Email
+aiosmtplib==3.0.1
+jinja2==3.1.3
+
+# OAuth
+httpx==0.26.0
+
+# Two-Factor Authentication
+pyotp==2.9.0
+qrcode[pil]==7.4.2
+cryptography==42.0.5  # Updated for security
+
+# Device Management
+user-agents==2.2.0
+
+# Image Processing
+pillow==10.3.0  # Updated for security
+
+# Logging
+loguru==0.7.2
+
+# Development & Testing
+pytest==8.0.0
+pytest-asyncio==0.23.4
