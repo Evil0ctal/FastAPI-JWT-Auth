@@ -27,7 +27,7 @@ httpx==0.26.0
 # Two-Factor Authentication
 pyotp==2.9.0
 qrcode[pil]==7.4.2
-cryptography==42.0.5  # Updated for security
+cryptography==44.0.1  # Updated for security
 
 # Device Management
 user-agents==2.2.0
