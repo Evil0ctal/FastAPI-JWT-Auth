@@ -30,12 +30,12 @@
 **🚀 A production-ready authentication system built with FastAPI**
 
 <p align="center">
-  <a href="#features">Features</a> •
-  <a href="#demo">Demo</a> •
-  <a href="#quick-start">Quick Start</a> •
-  <a href="#api-documentation">API Docs</a> •
-  <a href="#deployment">Deploy</a> •
-  <a href="#contributing">Contributing</a>
+  <a href="#-features">Features</a> •
+  <a href="#-screenshots">Screenshots</a> •
+  <a href="#-quick-start">Quick Start</a> •
+  <a href="#-api-documentation">API Docs</a> •
+  <a href="#-deployment">Deploy</a> •
+  <a href="#-contributing">Contributing</a>
 </p>
 </div>
 
