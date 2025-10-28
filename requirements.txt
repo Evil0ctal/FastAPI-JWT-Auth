@@ -9,7 +9,7 @@ pydantic-settings==2.1.0
 python-dotenv==1.0.1
 
 # ASGI/HTTP
-starlette==0.36.3
+starlette==0.49.1
 aiofiles==23.2.1
 
 # Database
