@@ -33,7 +33,7 @@ cryptography==42.0.5  # Updated for security
 user-agents==2.2.0
 
 # Image Processing
-pillow==10.3.0  # Updated for security
+pillow==12.2.0  # Updated for security
 
 # Logging
 loguru==0.7.2
